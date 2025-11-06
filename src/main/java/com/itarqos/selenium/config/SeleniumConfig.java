@@ -86,7 +86,7 @@ import java.nio.file.Path;
     public Set<String> disabledParticleIds = new HashSet<>();  // registry ids of particles to block individually
 
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
-    private static final Path CONFIG_PATH = Path.of("config", "selenium.json");
+    private static final Path CONFIG_PATH = Path.of("config", "selenium.mixins.json");
 
     public static SeleniumConfig load() {
         try {
