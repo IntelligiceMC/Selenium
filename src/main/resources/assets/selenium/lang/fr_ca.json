@@ -1,0 +1,10 @@
+{
+  "selenium.settings.title": "Paramètres selenium",
+  "selenium.settings.tab.entities": "Entités",
+  "selenium.settings.tab.world": "Monde",
+  "selenium.settings.tab.advanced": "Avancé",
+  "selenium.settings.done": "Terminé",
+
+  "selenium.common.on": "Activé",
+  "selenium.common.off": "Désactivé"
+}

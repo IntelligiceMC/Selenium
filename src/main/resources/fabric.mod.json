@@ -1,29 +1,28 @@
 {
 	"schemaVersion": 1,
-	"id": "threadium",
+	"id": "selenium",
 	"version": "${version}",
-	"name": "Threadium",
-	"description": "Threadium is a mod that reduces wasted rendering work by skipping or delaying things the player can’t see, spreading expensive updates over time, and keeping particle spawn under control so the game stays smoother",
+	"name": "Selenium",
+	"description": "Selenium is a mod that reduces wasted rendering work by skipping or delaying things the player can't see, spreading expensive updates over time, and keeping particle spawn under control so the game stays smoother",
 	"authors": [
 		"itarqos5"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
 	},
 	"license": "CC0-1.0",
-	"icon": "assets/threadium/icon.png",
+	"icon": "assets/selenium/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"com.itarqos.threadium.Threadium"
+			"com.itarqos.selenium.Selenium"
 		],
 		"client": [
-			"com.itarqos.threadium.client.ThreadiumClient"
+			"com.itarqos.selenium.client.SeleniumClient"
 		]
 	},
 	"mixins": [
-		"threadium.mixins.json"
+		"selenium.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.17.2",

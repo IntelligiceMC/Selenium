@@ -1,0 +1,44 @@
+package com.itarqos.selenium.client.screen.components.sliders;
+
+import com.itarqos.selenium.client.SeleniumClient;
+import com.itarqos.selenium.config.SeleniumConfig;
+import net.minecraft.client.gui.widget.SliderWidget;
+import net.minecraft.text.Text;
+
+public class DebounceSlider extends SliderWidget {
+    private static final int MIN = 50;
+    private static final int MAX = 600;
+    private final SeleniumConfig cfg;
+
+    public DebounceSlider(int x, int y, int width, int height, int initial, SeleniumConfig cfg) {
+        super(x, y, width, height, Text.of(label(initial)), normalize(initial));
+        this.cfg = cfg;
+    }
+
+    @Override
+    protected void updateMessage() {
+        this.setMessage(Text.of(label(current())));
+    }
+
+    @Override
+    protected void applyValue() {
+        cfg.sliceDebounceMillis = current();
+        SeleniumClient.saveConfig();
+    }
+
+    private static double normalize(int v) {
+        return (clamp(v) - (double) MIN) / (double) (MAX - MIN);
+    }
+
+    private int current() {
+        return clamp((int) Math.round(MIN + this.value * (MAX - MIN)));
+    }
+
+    private static int clamp(int v) {
+        return Math.max(MIN, Math.min(MAX, v));
+    }
+
+    private static String label(int v) {
+        return Text.translatable("selenium.settings.slice_debounce", clamp(v)).getString();
+    }
+}

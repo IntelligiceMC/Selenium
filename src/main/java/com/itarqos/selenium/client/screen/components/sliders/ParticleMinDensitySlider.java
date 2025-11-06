@@ -1,0 +1,44 @@
+package com.itarqos.selenium.client.screen.components.sliders;
+
+import com.itarqos.selenium.client.SeleniumClient;
+import com.itarqos.selenium.config.SeleniumConfig;
+import net.minecraft.client.gui.widget.SliderWidget;
+import net.minecraft.text.Text;
+
+public class ParticleMinDensitySlider extends SliderWidget {
+    private static final double MIN = 0.1;
+    private static final double MAX = 1.0;
+    private final SeleniumConfig cfg;
+
+    public ParticleMinDensitySlider(int x, int y, int width, int height, float initial, SeleniumConfig cfg) {
+        super(x, y, width, height, Text.of(label(initial)), normalize(initial));
+        this.cfg = cfg;
+    }
+
+    @Override
+    protected void updateMessage() {
+        this.setMessage(Text.of(label((float) current())));
+    }
+
+    @Override
+    protected void applyValue() {
+        cfg.particleMinDensity = (float) current();
+        SeleniumClient.saveConfig();
+    }
+
+    private static double normalize(float v) {
+        return (clamp(v) - MIN) / (MAX - MIN);
+    }
+
+    private double current() {
+        return MIN + this.value * (MAX - MIN);
+    }
+
+    private static float clamp(float v) {
+        return (float) Math.max(MIN, Math.min(MAX, v));
+    }
+
+    private static String label(float v) {
+        return Text.translatable("selenium.settings.particle_min_density", String.format("%.2f", clamp(v))).getString();
+    }
+}

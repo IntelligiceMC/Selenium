@@ -1,0 +1,24 @@
+{
+	"required": true,
+	"package": "com.itarqos.selenium.mixin",
+	"compatibilityLevel": "JAVA_21",
+	"mixins": [
+		"ExampleMixin"
+	],
+	"client": [
+		"render.EntityRenderDispatcherMixin",
+		"OptionsScreenMixin",
+		"render.BlockEntityRenderDispatcherMixin",
+		"render.FrustumMixin",
+		"render.WorldRendererMixin",
+		"render.WorldRendererAccessor",
+		"render.particles.ParticleManagerMixin",
+		"render.particles.ClientWorldMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	},
+	"overwrites": {
+		"requireAnnotations": true
+	}
+}
